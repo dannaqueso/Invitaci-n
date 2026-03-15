@@ -118,6 +118,11 @@ font-size:18px;
 <small>min</small>
 </div>
 
+<div>
+<div id="segundos"></div>
+<small>seg</small>
+</div>
+
 </div>
 
 </div>
@@ -149,14 +154,15 @@ src="https://www.google.com/maps?q=Salón%20Punta%20del%20Sol%20Abelardo%20L.%20
 <img src="assets/confirmacion.jpg">
 
 <a class="confirmar"
-href="https://wa.me/524492644872?text=Confirmo%20mi%20asistencia%20al%20cumpleaños">
+href="https://wa.me/524492644872?text=Confirmo%20mi%20asistencia%0A%0ANombre:%0ANúmero%20de%20adultos:%0ANúmero%20de%20niños:">
 Confirmar asistencia </a>
 
 </div>
 
 <script>
 
-const eventDate = new Date("Sep 5, 2026 16:00:00").getTime();
+/* Fecha del evento en horario de Aguascalientes (UTC-6) */
+const eventDate = new Date("2026-09-05T16:00:00-06:00").getTime();
 
 setInterval(function(){
 
@@ -166,10 +172,12 @@ const distance = eventDate - now;
 const days = Math.floor(distance/(1000*60*60*24));
 const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
 const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+const seconds = Math.floor((distance%(1000*60))/1000);
 
 document.getElementById("dias").innerHTML = days;
 document.getElementById("horas").innerHTML = hours;
 document.getElementById("minutos").innerHTML = minutes;
+document.getElementById("segundos").innerHTML = seconds;
 
 },1000);
 
